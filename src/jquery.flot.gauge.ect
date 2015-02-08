@@ -1,0 +1,351 @@
+/*!
+ * jquery.flot.gauge v<%= @version %>
+ *
+ *
+ * Flot plugin for rendering gauge charts.
+ *
+ * Copyright (c) 2015 @toyoty99.
+ * Licensed under the MIT license.
+ */
+
+/**
+ * @module flot.gauge
+ */
+(function($) {
+<% if @debug is "debug" : %>
+<% include "Logger.js" %>
+<% end %>
+
+
+<% include "Gauge.js" %>
+
+    /**
+     * get a instance of Logger
+     *
+     * @method  getLogger
+     * @for flot.gauge
+     * @private
+     * @param  {Object} debugOptions the options of debug
+     */
+    function getLogger(debugOptions) {
+        return typeof Logger !== "undefined" ? new Logger(debugOptions) : null;
+    }
+
+    /**
+     * calculate the index of columns for the specified data
+     *
+     * @method col
+     * @for flot.gauge
+     * @param  {Number} columns the number of columns
+     * @param  {Number} i       the index of the series
+     * @return the index of columns
+     */
+    function col(columns, i) {
+        return i % columns;
+    }
+
+    /**
+     * calculate the index of rows for the specified data
+     *
+     * @method row
+     * @for flot.gauge
+     * @param  {Number} columns the number of rows
+     * @param  {Number} i       the index of the series
+     * @return the index of rows
+     */
+    function row(columns, i) {
+        return Math.floor(i / columns);
+    }
+
+    /**
+     * calculate the angle in radians
+     *
+     * internally, use a number without PI (0 - 2).
+     * so, in this function, multiply PI
+     *
+     * @method toRad
+     * @for flot.gauge
+     * @param  {Number} a the number of angle without PI
+     * @return the angle in radians
+     */
+    function toRad(a) {
+        return a * Math.PI;
+    }
+
+    /**
+     * draw an arc
+     *
+     * @method drawArc
+     * @for flot.gauge
+     * @param  {Object} context the context of canvas
+     * @param  {Number} cx the x position of the center
+     * @param  {Number} cy the y position of the center
+     * @param  {Number} r the radius of an arc
+     * @param  {Number} w the width of an arc
+     * @param  {Number} rd1 the start angle of an arc in radians
+     * @param  {Number} rd2 the end angle of an arc in radians
+     * @param  {String} lc the color of a line
+     * @param  {Number} lw the widht of a line
+     * @param  {String} fc the fill color  of an arc
+     */
+    function drawArc(context, cx, cy, r, w, rd1, rd2, lc, lw, fc) {
+        if (rd1 === rd2) {
+            return;
+        }
+        var counterClockwise = false;
+        context.save();
+        context.beginPath();
+        context.arc(cx, cy, r, rd1, rd2, counterClockwise);
+        context.lineTo(cx + (r - w) * Math.cos(rd2),
+                       cy + (r - w) * Math.sin(rd2));
+        context.arc(cx, cy, r - w, rd2, rd1, !counterClockwise);
+        context.closePath();
+        if (lw) {
+            context.lineWidth = lw;
+        }
+        if (lc) {
+            context.strokeStyle = lc;
+            context.stroke();
+        }
+        if (fc) {
+            context.fillStyle = fc;
+            context.fill();
+        }
+        context.restore();
+    }
+
+    /**
+     * initialize plugin
+     *
+     * @method init
+     * @for flot.gauge
+     * @private
+     * @param  {Object} plot a instance of plot
+     */
+    function init (plot) {
+        // add processOptions hook
+        plot.hooks.processOptions.push(function(plot, options) {
+            var logger = getLogger(options.series.gauges.debug);
+
+            logger.log("flot.gauge.processOptions");
+            logger.log("options=", options);
+
+            // turn 'grid' and 'legend' off
+            if (options.series.gauges.show) {
+                options.grid.show = false;
+                options.legend.show = false;
+            }
+
+            // sort threshold
+            var thresholds = options.series.gauges.threshold.values;
+            logger.log("thresholds=", thresholds);
+            thresholds.sort(function(a, b) {
+                if (a.value < b.value) {
+                    return -1;
+                } else if (a.value > b.value) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            logger.log("thresholds(sorted)=", thresholds);
+
+            logger.log("options=", options);
+        });
+
+        // add draw hook
+        plot.hooks.draw.push(function(plot, context) {
+            var options = plot.getOptions();
+            var gaugeOptions = options.series.gauges;
+
+            var logger = getLogger(gaugeOptions.debug);
+            logger.log("flot.gauge.draw");
+
+            if (!gaugeOptions.show) {
+                return;
+            }
+
+            var series = plot.getData();
+            logger.log("series=", series);
+            if (!series || !series.length) {
+                return; // if no series were passed
+            }
+
+            var gauge = new Gauge(plot, context);
+
+            // calculate layout
+            var layout = gauge.calculateLayout();
+            logger.log("layout=", layout);
+            // debug layout
+            if (gaugeOptions.debug.layout) {
+                logger.debugLayout(context, series.length, layout);
+            }
+
+            // draw background
+            gauge.drawBackground(layout)
+
+            // draw cells (label, gauge, value, threshold)
+            for (var i = 0; i < series.length; i++) {
+                var item = series[i];
+                logger.log("item[" + i + "]=", item);
+                var gaugeOptionsi = $.extend({}, gaugeOptions, item.gauges);
+                if (item.gauges) {
+                    // re-calculate 'auto' values
+                    gauge.calculateAutoValues(gaugeOptionsi, layout.cellWidth);
+                }
+                logger.log("gaugeOptions[" + i + "]=", gaugeOptionsi);
+                // calculate cell layout
+                var cellLayout = gauge.calculateCellLayout(gaugeOptionsi, layout, i);
+                logger.log("cellLayout=", cellLayout);
+                // draw cell background
+                gauge.drawCellBackground(gaugeOptionsi, cellLayout)
+                // debug layout
+                if (gaugeOptionsi.debug.layout) {
+                    logger.debugCellLayout(context, gaugeOptionsi, layout, cellLayout);
+                }
+                // draw label
+                if (gaugeOptionsi.label.show) {
+                    gauge.drawLable(gaugeOptionsi, layout, cellLayout, i, item);
+                }
+                // draw gauge
+                gauge.drawGauge(gaugeOptionsi, layout, cellLayout, item.label, item.data[0][1]);
+                // draw threshold
+                if (gaugeOptionsi.threshold.show) {
+                    gauge.drawThreshold(gaugeOptionsi, layout, cellLayout);
+                }
+                if (gaugeOptionsi.threshold.label.show) {
+                    gauge.drawThresholdValues(gaugeOptionsi, layout, cellLayout, i)
+                }
+                // draw value
+                if (gaugeOptionsi.value.show) {
+                    gauge.drawValue(gaugeOptionsi, layout, cellLayout, i, item);
+                }
+            }
+        });
+    }
+
+    /**
+     * [defaults description]
+     *
+     * @property defaults
+     * @type {Object}
+     */
+    var defaults = {
+        series: {
+            gauges: {
+                debug: {
+                    log: false,
+                    layout: false,
+                    alert: false
+                },
+                show: false,
+                layout: {
+                    margin: 5,
+                    columns: 3,
+                    hMargin: 5,
+                    vMargin: 5,
+                    square: false
+                },
+                cell: {
+                    background: {
+                        color: null
+                    },
+                    border: {
+                        color: "black",
+                        width: 1
+                    },
+                    margin: 5,
+                    vAlign: "middle" // 'top' or 'middle' or 'bottom'
+                },
+                gauge: {
+                    width: "auto", // a specified number, or 'auto'
+                    startAngle: 0.9, // 0 - 2 factor of the radians
+                    endAngle: 2.1, // 0 - 2 factor of the radians
+                    min: 0,
+                    max: 100,
+                    shadow: {
+                        show: true,
+                        blur: 5
+                    },
+                    stroke: {
+                        color: "lightgray",
+                        width: 2
+                    }
+                },
+                label: {
+                    show: true,
+                    margin: "auto", // a specified number, or 'auto'
+                    background: {
+                        color: null,
+                        opacity: 0
+                    },
+                    font: {
+                        size: "auto", // a specified number, or 'auto'
+                        family: "sans-serif"
+                    },
+                    color: null,
+                    formatter: function(label, value) {
+                        return label;
+                    }
+                },
+                value: {
+                    show: true,
+                    margin: "auto", // a specified number, or 'auto'
+                    background: {
+                        color: null,
+                        opacity: 0
+                    },
+                    font: {
+                        size: "auto", // a specified number, or 'auto'
+                        family: "sans-serif"
+                    },
+                    color: null,
+                    formatter: function(label, value) {
+                        return parseInt(value);
+                    }
+                },
+                threshold: {
+                    show: true,
+                    width: "auto", // a specified number, or 'auto'
+                    label: {
+                        show: true,
+                        margin: "auto", // a specified number, or 'auto'
+                        background: {
+                            color: null,
+                            opacity: 0
+                        },
+                        font: {
+                            size: "auto", // a specified number, or 'auto'
+                            family: ",sans-serif"
+                        },
+                        color: null,
+                        formatter: function(value) {
+                            return value;
+                        }
+                    },
+                    values: [
+                        {
+                            value: 50,
+                            color: "lightgreen"
+                        }, {
+                            value: 80,
+                            color: "yellow"
+                        }, {
+                            value: 100,
+                            color: "red"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+
+    // register the gauge plugin
+    $.plot.plugins.push({
+        init: init,
+        options: defaults,
+        name: "gauge",
+        version: "<%= @version %>"
+    });
+
+})(jQuery);

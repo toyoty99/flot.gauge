@@ -11,170 +11,7 @@
  * @module flot.gauge
  */
 (function($) {
-    /**
-     * Logger class
-     *
-     * @class Logger
-     */
-    var Logger = (function() {
-        /**
-         * constructor
-         *
-         * @class Logger
-         * @constructor
-         * @param {Object} debugOptions debug options
-         */
-        var Logger = function(debugOptions) {
-            var log;
-            // create log function
-            if (debugOptions.log) {
-                if (window.console && console.log) {
-                    if (console.log.bind) {
-                        log = console.log.bind(console);
-                    } else {
-                        log = function() {
-                            var text = Array.prototype.join.apply(arguments, [""]);
-                            console.log(text);
-                        }
-                    }
-                } else if (debugOptions.alert) {
-                    log = function() {
-                        var text = Array.prototype.join.apply(arguments, [""]);
-                        alert(text);
-                    }
-                } else {
-                    log = function(){};
-                }
-            } else {
-                log = function(){};
-            }
-            /**
-             * log
-             *
-             * @method log
-             * @param {Object} ...obj
-             */
-            Logger.prototype.log = log;
-        }
 
-        /**
-         * debug the layout
-         *
-         * @method debugLayout
-         * @param  {Object} context the context of canvas
-         * @param  {Number} seriesLength the length of series
-         * @param  {Object} layout the layout properties
-         */
-        Logger.prototype.debugLayout = function(context, seriesLength, layout) {
-            context.save();
-            context.strokeStyle = "gray";
-            context.lineWidth = 1;
-            context.strokeRect(0, 0, layout.canvasWidth, layout.canvasHeight);
-            for (var i = 0; i < seriesLength; i++) {
-                var c = col(layout.columns, i);
-                var r = row(layout.columns, i);
-                context.strokeRect(
-                    layout.margin + layout.cellWidth * c + layout.hMargin * c,
-                    layout.margin + layout.cellHeight * r + layout.vMargin * r,
-                    layout.cellWidth,
-                    layout.cellHeight);
-            }
-            context.restore();
-        }
-
-        /**
-         * debug the cell layout
-         *
-         * @method debugCellLayout
-         * @param  {Object} context the context of canvas
-         * @param  {Object} gaugeOptions the option of the gauge
-         * @param  {Object} layout the layout properties
-         * @param  {Object} cellLayout the cell layout properties
-         */
-        Logger.prototype.debugCellLayout = function(context, gaugeOptions, layout, cellLayout) {
-            context.save();
-            context.strokeStyle = "gray";
-            context.lineWidth = 1;
-            // debug label layout
-            if (gaugeOptions.label.show) {
-                var labelMarginWidth = (cellLayout.cellWidth / 3) + (layout.labelMargin * 2);
-                var labelMarginHeight = layout.labelFontSize + (layout.labelMargin * 2);
-                var labelWidth = (cellLayout.cellWidth / 3);
-                var labelHeight = layout.labelFontSize;
-                context.strokeRect(
-                    cellLayout.cx - (labelMarginWidth / 2),
-                    cellLayout.y + cellLayout.cellMargin + cellLayout.offsetY,
-                    labelMarginWidth,
-                    labelMarginHeight);
-                context.strokeRect(
-                    cellLayout.cx - (labelWidth / 2),
-                    cellLayout.y + cellLayout.cellMargin + layout.labelMargin + cellLayout.offsetY,
-                    labelWidth,
-                    labelHeight);
-            }
-            // debug value layout
-            if (gaugeOptions.value.show) {
-                var valueMarginWidth = (cellLayout.cellWidth / 3) + (layout.valueMargin * 2);
-                var valueMarginHeight = layout.valueFontSize + (layout.valueMargin * 2);
-                var valueWidth = (cellLayout.cellWidth / 3);
-                var valueHeight = layout.valueFontSize;
-                context.strokeRect(
-                    cellLayout.cx - (valueMarginWidth / 2),
-                    cellLayout.cy - (valueMarginHeight / 2),
-                    valueMarginWidth,
-                    valueMarginHeight);
-                context.strokeRect(
-                    cellLayout.cx - (valueWidth / 2),
-                    cellLayout.cy - (valueHeight / 2),
-                    valueWidth,
-                    valueHeight);
-            }
-            // debug gauge center
-            context.strokeRect(cellLayout.cx, cellLayout.cy, 1, 1);
-            // debug gauge outer height
-            context.strokeRect(
-                cellLayout.x + cellLayout.cellMargin,
-                cellLayout.y + cellLayout.cellMargin + labelMarginHeight + cellLayout.offsetY,
-                cellLayout.cellWidth - (cellLayout.cellMargin * 2),
-                layout.gaugeOuterHeight);
-            // debug gauge layout
-            drawArc(
-                context,
-                cellLayout.cx,
-                cellLayout.cy,
-                layout.radius,
-                layout.width,
-                toRad(gaugeOptions.gauge.startAngle),
-                toRad(gaugeOptions.gauge.endAngle),
-                context.strokeStyle);
-            // debug threshold layout
-            if (gaugeOptions.threshold.show) {
-                drawArc(
-                    context,
-                    cellLayout.cx, cellLayout.cy,
-                    layout.radius + layout.thresholdWidth,
-                    layout.thresholdWidth,
-                    toRad(gaugeOptions.gauge.startAngle),
-                    toRad(gaugeOptions.gauge.endAngle),
-                    context.strokeStyle);
-            }
-            // debug threshold label layout
-            if (gaugeOptions.threshold.label.show) {
-                drawArc(
-                    context,
-                    cellLayout.cx,
-                    cellLayout.cy,
-                    layout.radius + layout.thresholdWidth + layout.thresholdLabelFontSize + (layout.thresholdLabelMargin * 2),
-                    layout.thresholdLabelFontSize + (layout.thresholdLabelMargin * 2),
-                    toRad(gaugeOptions.gauge.startAngle),
-                    toRad(gaugeOptions.gauge.endAngle),
-                    context.strokeStyle);
-            }
-            context.restore();
-        }
-
-        return Logger;
-    })();
 
     /**
      * Gauge class
@@ -248,17 +85,17 @@
          * @return the calculated layout properties
          */
         Gauge.prototype.calculateLayout = function() {
-            logger.log("flot.gauge.calculateLayout");
+            
             var canvasWidth = placeholder.width();
             var canvasHeight = placeholder.height();
-            logger.log("canvasWidth=", canvasWidth);
-            logger.log("canvasHeight=", canvasHeight);
+            
+            
 
             // calculate cell size
             var columns = Math.min(series.length, gaugeOptions.layout.columns);
             var rows = Math.ceil(series.length / columns);
-            logger.log("columns=", columns);
-            logger.log("rows=", rows);
+            
+            
 
             var margin = gaugeOptions.layout.margin;
             var hMargin = gaugeOptions.layout.hMargin;
@@ -270,8 +107,8 @@
                 cellWidth = cell;
                 cellHeight = cell;
             }
-            logger.log("cellWidth=", cellWidth);
-            logger.log("cellHeight=", cellHeight);
+            
+            
 
             // calculate 'auto' values
             calculateAutoValues(gaugeOptions, cellWidth);
@@ -318,13 +155,13 @@
             var maxRadiusV = outerRadiusV - (thresholdLabelMargin * 2) - thresholdLabelFontSize - thresholdWidth;
 
             var radius = Math.min(maxRadiusH, maxRadiusV);
-            logger.log("radius=", radius);
+            
 
             var width = gaugeOptions.gauge.width;
             if (width >= radius) {
                 width = Math.max(3, radius / 3);
             }
-            logger.log("width=", width);
+            
 
             var outerRadius = (thresholdLabelMargin * 2) + thresholdLabelFontSize + thresholdWidth + radius;
             var gaugeOuterHeight = Math.max(outerRadius * (1 + heightRatioV), outerRadius + valueMargin + (valueFontSize / 2));
@@ -361,7 +198,7 @@
          * @param  {Number} cellWidth the width of cell
          */
         function calculateAutoValues(gaugeOptionsi, cellWidth) {
-            logger.log("flot.gauge.calculateAutoValues");
+            
             if (gaugeOptionsi.gauge.width === "auto") {
                 gaugeOptionsi.gauge.width = Math.max(5, cellWidth / 8);
             }
@@ -386,7 +223,7 @@
             if (gaugeOptionsi.threshold.label.font.size === "auto") {
                 gaugeOptionsi.threshold.label.font.size = Math.max(5, cellWidth / 15);
             }
-            logger.log("gaugeOptions=", gaugeOptionsi);
+            
         }
         Gauge.prototype.calculateAutoValues = calculateAutoValues;
 
@@ -400,7 +237,7 @@
          * @return the calculated cell layout properties
          */
         Gauge.prototype.calculateCellLayout = function(gaugeOptionsi, layout, i) {
-            logger.log("flot.gauge.calculateCellLayout");
+            
             // calculate top, left and center
             var c = col(layout.columns, i);
             var r = row(layout.columns, i);
@@ -439,7 +276,7 @@
          * @param  {Object} layout the layout properties
          */
         Gauge.prototype.drawBackground = function(layout) {
-            logger.log("flot.gauge.drawBackground");
+            
             context.save();
             context.strokeStyle = options.grid.borderColor;
             context.lineWidth = options.grid.borderWidth;
@@ -459,7 +296,7 @@
          * @param  {Object} cellLayout the cell layout properties
          */
         Gauge.prototype.drawCellBackground = function(gaugeOptionsi, cellLayout) {
-            logger.log("flot.gauge.drawCellBackground");
+            
             context.save();
             if (gaugeOptionsi.cell.border && gaugeOptionsi.cell.border.color && gaugeOptionsi.cell.border.width) {
                 context.strokeStyle = gaugeOptionsi.cell.border.color;
@@ -484,10 +321,10 @@
          * @param  {Number} data the value of the gauge
          */
         Gauge.prototype.drawGauge = function(gaugeOptionsi, layout, cellLayout, label, data) {
-            logger.log("flot.gauge.drawGauge");
+            
 
             var blur = gaugeOptionsi.gauge.shadow.show ? gaugeOptionsi.gauge.shadow.blur : 0;
-            logger.log("blur=", blur);
+            
 
             // draw gauge frame
             drawArcWithShadow(
@@ -570,7 +407,7 @@
          * @param  {Object} cellLayout the cell layout properties
          */
         Gauge.prototype.drawThreshold = function(gaugeOptionsi, layout, cellLayout) {
-            logger.log("flot.gauge.drawThreshold");
+            
             var a1 = gaugeOptionsi.gauge.startAngle;
             for (var i = 0; i < gaugeOptionsi.threshold.values.length; i++) {
                 var threshold = gaugeOptionsi.threshold.values[i];
@@ -638,7 +475,7 @@
          * @param  {Object} item the item of the series
          */
         Gauge.prototype.drawLable = function(gaugeOptionsi, layout, cellLayout, i, item) {
-            logger.log("flot.gauge.drawLable");
+            
             drawText(
                 cellLayout.cx,
                 cellLayout.y + cellLayout.cellMargin + layout.labelMargin + cellLayout.offsetY,
@@ -658,7 +495,7 @@
          * @param  {Object} item the item of the series
          */
         Gauge.prototype.drawValue = function(gaugeOptionsi, layout, cellLayout, i, item) {
-            logger.log("flot.gauge.drawValue");
+            
             drawText(
                 cellLayout.cx,
                 cellLayout.cy - (gaugeOptionsi.value.font.size / 2),
@@ -677,7 +514,7 @@
          * @param  {Number} i the index of the series
          */
         Gauge.prototype.drawThresholdValues = function(gaugeOptionsi, layout, cellLayout, i) {
-            logger.log("flot.gauge.drawThresholdValues");
+            
             // min, max
             drawThresholdValue(gaugeOptionsi, layout, cellLayout, "Min" + i, gaugeOptionsi.gauge.min, gaugeOptionsi.gauge.startAngle);
             drawThresholdValue(gaugeOptionsi, layout, cellLayout, "Max" + i, gaugeOptionsi.gauge.max, gaugeOptionsi.gauge.endAngle);
@@ -889,8 +726,8 @@
         plot.hooks.processOptions.push(function(plot, options) {
             var logger = getLogger(options.series.gauges.debug);
 
-            logger.log("flot.gauge.processOptions");
-            logger.log("options=", options);
+            
+            
 
             // turn 'grid' and 'legend' off
             if (options.series.gauges.show) {
@@ -900,7 +737,7 @@
 
             // sort threshold
             var thresholds = options.series.gauges.threshold.values;
-            logger.log("thresholds=", thresholds);
+            
             thresholds.sort(function(a, b) {
                 if (a.value < b.value) {
                     return -1;
@@ -910,9 +747,9 @@
                     return 0;
                 }
             });
-            logger.log("thresholds(sorted)=", thresholds);
+            
 
-            logger.log("options=", options);
+            
         });
 
         // add draw hook
@@ -921,14 +758,14 @@
             var gaugeOptions = options.series.gauges;
 
             var logger = getLogger(gaugeOptions.debug);
-            logger.log("flot.gauge.draw");
+            
 
             if (!gaugeOptions.show) {
                 return;
             }
 
             var series = plot.getData();
-            logger.log("series=", series);
+            
             if (!series || !series.length) {
                 return; // if no series were passed
             }
@@ -937,10 +774,10 @@
 
             // calculate layout
             var layout = gauge.calculateLayout();
-            logger.log("layout=", layout);
+            
             // debug layout
             if (gaugeOptions.debug.layout) {
-                logger.debugLayout(context, series.length, layout);
+                
             }
 
             // draw background
@@ -949,21 +786,21 @@
             // draw cells (label, gauge, value, threshold)
             for (var i = 0; i < series.length; i++) {
                 var item = series[i];
-                logger.log("item[" + i + "]=", item);
+                
                 var gaugeOptionsi = $.extend({}, gaugeOptions, item.gauges);
                 if (item.gauges) {
                     // re-calculate 'auto' values
                     gauge.calculateAutoValues(gaugeOptionsi, layout.cellWidth);
                 }
-                logger.log("gaugeOptions[" + i + "]=", gaugeOptionsi);
+                
                 // calculate cell layout
                 var cellLayout = gauge.calculateCellLayout(gaugeOptionsi, layout, i);
-                logger.log("cellLayout=", cellLayout);
+                
                 // draw cell background
                 gauge.drawCellBackground(gaugeOptionsi, cellLayout)
                 // debug layout
                 if (gaugeOptionsi.debug.layout) {
-                    logger.debugCellLayout(context, gaugeOptionsi, layout, cellLayout);
+                    
                 }
                 // draw label
                 if (gaugeOptionsi.label.show) {

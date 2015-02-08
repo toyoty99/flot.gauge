@@ -1,0 +1,2464 @@
+{
+    "project": {
+        "name": "flot.gauge",
+        "description": "Gauge plugin for Flot plotting library",
+        "version": "1.1.0",
+        "url": "https://github.com/toyoty99/flot.gauge"
+    },
+    "files": {
+        "js\\excanvas.js": {
+            "name": "js\\excanvas.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "js\\jquery.flot.growraf.js": {
+            "name": "js\\jquery.flot.growraf.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "js\\jquery.js": {
+            "name": "js\\jquery.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "old\\jquery.flot.gauge_20150204.js": {
+            "name": "old\\jquery.flot.gauge_20150204.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "old\\jquery.flot.gauge_20150204_2.js": {
+            "name": "old\\jquery.flot.gauge_20150204_2.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "jquery.flot.gauge.js": {
+            "name": "jquery.flot.gauge.js",
+            "modules": {
+                "flot.gauge": 1
+            },
+            "classes": {
+                "Logger": 1,
+                "Gauge": 1
+            },
+            "fors": {
+                "flot.gauge": 1
+            },
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "flot.gauge": {
+            "name": "flot.gauge",
+            "submodules": {},
+            "classes": {
+                "Logger": 1,
+                "Gauge": 1,
+                "flot.gauge": 1
+            },
+            "fors": {
+                "flot.gauge": 1
+            },
+            "namespaces": {},
+            "tag": "module",
+            "file": "jquery.flot.gauge.js",
+            "line": 228
+        }
+    },
+    "classes": {
+        "Logger": {
+            "name": "Logger",
+            "shortname": "Logger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "flot.gauge",
+            "namespace": "",
+            "file": "jquery.flot.gauge.js",
+            "line": 20,
+            "description": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "debugOptions",
+                    "description": "debug options",
+                    "type": "Object"
+                }
+            ]
+        },
+        "Gauge": {
+            "name": "Gauge",
+            "shortname": "Gauge",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "flot.gauge",
+            "namespace": "",
+            "file": "jquery.flot.gauge.js",
+            "line": 228,
+            "description": "constructor",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "gaugeOptions",
+                    "description": "gauge options",
+                    "type": "Object"
+                }
+            ]
+        },
+        "flot.gauge": {
+            "name": "flot.gauge",
+            "shortname": "flot.gauge",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "flot.gauge",
+            "namespace": ""
+        }
+    },
+    "classitems": [
+        {
+            "file": "js\\excanvas.js",
+            "line": 54,
+            "description": "This funtion is assigned to the <canvas> elements as element.getContext().",
+            "this": "{HTMLElement}",
+            "return": {
+                "description": "",
+                "type": "CanvasRenderingContext2D_"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "js\\excanvas.js",
+            "line": 66,
+            "description": "Binds a function to an object. The returned function will always use the\npassed in {@code obj} as {@code this}.\n\nExample:\n\n  g = bind(f, obj, a, b)\n  g(c, d) // will do f.call(obj, a, b, c, d)",
+            "params": [
+                {
+                    "name": "f",
+                    "description": "The function to bind the object to",
+                    "type": "Function"
+                },
+                {
+                    "name": "obj",
+                    "description": "The object that should act as this when the function\n    is called",
+                    "type": "Object"
+                },
+                {
+                    "name": "var_args",
+                    "description": "Rest arguments that will be used as the initial\n    arguments when the function is called",
+                    "type": "*"
+                }
+            ],
+            "return": {
+                "description": "A new function that has bound this",
+                "type": "Function"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "js\\excanvas.js",
+            "line": 133,
+            "description": "Public initializes a canvas element so that it can be used as canvas\nelement from now on. This is called automatically before the page is\nloaded but if you are creating elements using createElement you need to\nmake sure this is called on the element.",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "The canvas element to initialize.",
+                    "type": "HTMLElement"
+                }
+            ],
+            "return": {
+                "description": "the element that was created.",
+                "type": "HTMLElement"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "js\\excanvas.js",
+            "line": 564,
+            "description": "This class implements CanvasRenderingContext2D interface as described by\nthe WHATWG.",
+            "params": [
+                {
+                    "name": "canvasElement",
+                    "description": "The element that the 2D context should\nbe associated with",
+                    "type": "HTMLElement"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "js\\excanvas.js",
+            "line": 1212,
+            "description": "The text drawing function.\nThe maxWidth argument isn't taken in account, since no browser supports\nit yet.",
+            "class": "Logger"
+        },
+        {
+            "file": "js\\excanvas.js",
+            "line": 1330,
+            "class": "Logger"
+        },
+        {
+            "file": "js\\jquery.flot.growraf.js",
+            "line": 55,
+            "class": "Logger"
+        },
+        {
+            "file": "js\\jquery.js",
+            "line": 3983,
+            "description": "Utility function for retrieving the text value of an array of DOM nodes",
+            "params": [
+                {
+                    "name": "elem",
+                    "description": "",
+                    "type": "Array|Element"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 1,
+            "description": "Flot plugin for rendering gauge charts.\n\nCopyright (c) 2015 @toyoty99.\n\nLicensed under the MIT license.",
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 10,
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 72,
+            "description": "draw gauges",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "plot    Flot object"
+                },
+                {
+                    "name": "object",
+                    "description": "context context of canvas"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 147,
+            "description": "calculate the index of columns for the specified data",
+            "params": [
+                {
+                    "name": "number",
+                    "description": "columns the number of columns"
+                },
+                {
+                    "name": "number",
+                    "description": "i       the index of the series"
+                }
+            ],
+            "return": {
+                "description": "the index of columns"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 158,
+            "description": "calculate the index of rows for the specified data",
+            "params": [
+                {
+                    "name": "number",
+                    "description": "columns the number of rows"
+                },
+                {
+                    "name": "number",
+                    "description": "i       the index of the series"
+                }
+            ],
+            "return": {
+                "description": "the index of rows"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 169,
+            "description": "calculate the angle in radians\n\ninternally, use a number without PI (0 - 2).\nso, in this function, multiply PI",
+            "params": [
+                {
+                    "name": "number",
+                    "description": "a the number of angle without PI"
+                }
+            ],
+            "return": {
+                "description": "the angle in radians"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 182,
+            "description": "calculate layout",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder  [description]"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "number",
+                    "description": "seriesLength the length of series"
+                }
+            ],
+            "return": {
+                "description": "the calculated layout properties"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 296,
+            "description": "calculate the values which are set as 'auto'",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "number",
+                    "description": "cellWidth the width of cell"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 330,
+            "description": "debug the layout",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "number",
+                    "description": "seriesLength the length of series"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 354,
+            "description": "calculate the layout of the cell inside",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "number",
+                    "description": "cellWidth the width of cell"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                }
+            ],
+            "return": {
+                "description": "the calculated cell layout properties"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 395,
+            "description": "debug the cell layout",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 485,
+            "description": "draw the background of chart",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "options the option of chart"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 505,
+            "description": "draw the background of cell",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 527,
+            "description": "draw the gauge",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "string",
+                    "description": "label the label of data"
+                },
+                {
+                    "name": "number",
+                    "description": "data the value of the gauge"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 575,
+            "description": "decide the color of the data from the threshold options",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "number",
+                    "description": "data the value of the gauge"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 593,
+            "description": "calculate the angle of the data",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "data the value of the gauge"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 614,
+            "description": "draw the arc of the threshold",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 644,
+            "description": "draw an arc",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "number",
+                    "description": "cx the x position of the center"
+                },
+                {
+                    "name": "number",
+                    "description": "cy the y position of the center"
+                },
+                {
+                    "name": "number",
+                    "description": "r the radius of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "w the width of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "rd1 the start angle of an arc in radians"
+                },
+                {
+                    "name": "number",
+                    "description": "rd2 the end angle of an arc in radians"
+                },
+                {
+                    "name": "string",
+                    "description": "lc the color of a line"
+                },
+                {
+                    "name": "number",
+                    "description": "lw the widht of a line"
+                },
+                {
+                    "name": "string",
+                    "description": "fc the fill color  of an arc"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 684,
+            "description": "draw an arc with a shadow",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "number",
+                    "description": "cx the x position of the center"
+                },
+                {
+                    "name": "number",
+                    "description": "cy the y position of the center"
+                },
+                {
+                    "name": "number",
+                    "description": "r the radius of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "w the width of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "rd1 the start angle of an arc in radians"
+                },
+                {
+                    "name": "number",
+                    "description": "rd2 the end angle of an arc in radians"
+                },
+                {
+                    "name": "string",
+                    "description": "lc the color of a line"
+                },
+                {
+                    "name": "number",
+                    "description": "lw the widht of a line"
+                },
+                {
+                    "name": "string",
+                    "description": "fc the fill color  of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "blur the shdow blur"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 720,
+            "description": "draw the label of the gauge",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                },
+                {
+                    "name": "object",
+                    "description": "item the item of the series"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 741,
+            "description": "draw the value of the gauge",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                },
+                {
+                    "name": "object",
+                    "description": "item the item of the series"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 762,
+            "description": "draw the values of the threshold",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 786,
+            "description": "draw the value of the threshold",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                },
+                {
+                    "name": "number",
+                    "description": "value the value of the threshold"
+                },
+                {
+                    "name": "number",
+                    "description": "a the angle of the value drawn"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 812,
+            "description": "draw a text\n\nthe textOptions is assumed as follows:\n\n  textOptions: {\n      background: {\n          color: null,\n          opacity: 0\n      },\n      font: {\n          size: \"auto\"\n          family: \"\\\"ＭＳ ゴシック\\\",sans-serif\"\n      },\n      color: null\n  }",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "number",
+                    "description": "x the x position of the text drawn (left top)"
+                },
+                {
+                    "name": "number",
+                    "description": "y the y position of the text drawn (left top)"
+                },
+                {
+                    "name": "string",
+                    "description": "id the id of the dom element"
+                },
+                {
+                    "name": "string",
+                    "description": "text the text drawn"
+                },
+                {
+                    "name": "object",
+                    "description": "textOptions the option of the text"
+                },
+                {
+                    "name": "number",
+                    "description": "a the angle of the value drawn"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204.js",
+            "line": 877,
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 1,
+            "description": "Flot plugin for rendering gauge charts.\n\nCopyright (c) 2015 @toyoty99.\n\nLicensed under the MIT license.",
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 9,
+            "description": "Logger class",
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 13,
+            "description": "constructor",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "debugOptions debug options"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 45,
+            "description": "debug the layout",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "number",
+                    "description": "seriesLength the length of series"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 69,
+            "description": "debug the cell layout",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 162,
+            "description": "Gauge class",
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 166,
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 169,
+            "description": "constructor",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions gauge options"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 178,
+            "description": "calculate layout",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder  [description]"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "number",
+                    "description": "seriesLength the length of series"
+                }
+            ],
+            "return": {
+                "description": "the calculated layout properties"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 292,
+            "description": "calculate the values which are set as 'auto'",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "number",
+                    "description": "cellWidth the width of cell"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 327,
+            "description": "calculate the layout of the cell inside",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "number",
+                    "description": "cellWidth the width of cell"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                }
+            ],
+            "return": {
+                "description": "the calculated cell layout properties"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 368,
+            "description": "draw the background of chart",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "options the option of chart"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 388,
+            "description": "draw the background of cell",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 410,
+            "description": "draw the gauge",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "string",
+                    "description": "label the label of data"
+                },
+                {
+                    "name": "number",
+                    "description": "data the value of the gauge"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 458,
+            "description": "decide the color of the data from the threshold options",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "number",
+                    "description": "data the value of the gauge"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 476,
+            "description": "calculate the angle of the data",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "data the value of the gauge"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 497,
+            "description": "draw the arc of the threshold",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 527,
+            "description": "draw an arc",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "number",
+                    "description": "cx the x position of the center"
+                },
+                {
+                    "name": "number",
+                    "description": "cy the y position of the center"
+                },
+                {
+                    "name": "number",
+                    "description": "r the radius of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "w the width of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "rd1 the start angle of an arc in radians"
+                },
+                {
+                    "name": "number",
+                    "description": "rd2 the end angle of an arc in radians"
+                },
+                {
+                    "name": "string",
+                    "description": "lc the color of a line"
+                },
+                {
+                    "name": "number",
+                    "description": "lw the widht of a line"
+                },
+                {
+                    "name": "string",
+                    "description": "fc the fill color  of an arc"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 567,
+            "description": "draw an arc with a shadow",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "context the context of canvas"
+                },
+                {
+                    "name": "number",
+                    "description": "cx the x position of the center"
+                },
+                {
+                    "name": "number",
+                    "description": "cy the y position of the center"
+                },
+                {
+                    "name": "number",
+                    "description": "r the radius of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "w the width of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "rd1 the start angle of an arc in radians"
+                },
+                {
+                    "name": "number",
+                    "description": "rd2 the end angle of an arc in radians"
+                },
+                {
+                    "name": "string",
+                    "description": "lc the color of a line"
+                },
+                {
+                    "name": "number",
+                    "description": "lw the widht of a line"
+                },
+                {
+                    "name": "string",
+                    "description": "fc the fill color  of an arc"
+                },
+                {
+                    "name": "number",
+                    "description": "blur the shdow blur"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 603,
+            "description": "draw the label of the gauge",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                },
+                {
+                    "name": "object",
+                    "description": "item the item of the series"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 624,
+            "description": "draw the value of the gauge",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                },
+                {
+                    "name": "object",
+                    "description": "item the item of the series"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 645,
+            "description": "draw the values of the threshold",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 669,
+            "description": "draw the value of the threshold",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "object",
+                    "description": "gaugeOptions the option of the gauge"
+                },
+                {
+                    "name": "object",
+                    "description": "layout the layout properties"
+                },
+                {
+                    "name": "object",
+                    "description": "cellLayout the cell layout properties"
+                },
+                {
+                    "name": "number",
+                    "description": "i the index of the series"
+                },
+                {
+                    "name": "number",
+                    "description": "value the value of the threshold"
+                },
+                {
+                    "name": "number",
+                    "description": "a the angle of the value drawn"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 695,
+            "description": "draw a text\n\nthe textOptions is assumed as follows:\n\n  textOptions: {\n      background: {\n          color: null,\n          opacity: 0\n      },\n      font: {\n          size: \"auto\"\n          family: \"\\\"ＭＳ ゴシック\\\",sans-serif\"\n      },\n      color: null\n  }",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "placeholder the jQuery object of the placeholder"
+                },
+                {
+                    "name": "number",
+                    "description": "x the x position of the text drawn (left top)"
+                },
+                {
+                    "name": "number",
+                    "description": "y the y position of the text drawn (left top)"
+                },
+                {
+                    "name": "string",
+                    "description": "id the id of the dom element"
+                },
+                {
+                    "name": "string",
+                    "description": "text the text drawn"
+                },
+                {
+                    "name": "object",
+                    "description": "textOptions the option of the text"
+                },
+                {
+                    "name": "number",
+                    "description": "a the angle of the value drawn"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 761,
+            "description": "calculate the index of columns for the specified data",
+            "params": [
+                {
+                    "name": "number",
+                    "description": "columns the number of columns"
+                },
+                {
+                    "name": "number",
+                    "description": "i       the index of the series"
+                }
+            ],
+            "return": {
+                "description": "the index of columns"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 772,
+            "description": "calculate the index of rows for the specified data",
+            "params": [
+                {
+                    "name": "number",
+                    "description": "columns the number of rows"
+                },
+                {
+                    "name": "number",
+                    "description": "i       the index of the series"
+                }
+            ],
+            "return": {
+                "description": "the index of rows"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 783,
+            "description": "calculate the angle in radians\n\ninternally, use a number without PI (0 - 2).\nso, in this function, multiply PI",
+            "params": [
+                {
+                    "name": "number",
+                    "description": "a the number of angle without PI"
+                }
+            ],
+            "return": {
+                "description": "the angle in radians"
+            },
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 796,
+            "description": "initialize plugin",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "plot a instance of plot"
+                }
+            ],
+            "class": "Logger"
+        },
+        {
+            "file": "old\\jquery.flot.gauge_20150204_2.js",
+            "line": 905,
+            "class": "Logger"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 51,
+            "description": "log",
+            "itemtype": "method",
+            "name": "log",
+            "params": [
+                {
+                    "name": "obj",
+                    "description": "",
+                    "type": "Object",
+                    "multiple": true
+                }
+            ],
+            "class": "Logger",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 60,
+            "description": "debug the layout",
+            "itemtype": "method",
+            "name": "debugLayout",
+            "params": [
+                {
+                    "name": "context",
+                    "description": "the context of canvas",
+                    "type": "Object"
+                },
+                {
+                    "name": "seriesLength",
+                    "description": "the length of series",
+                    "type": "Number"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                }
+            ],
+            "class": "Logger",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 85,
+            "description": "debug the cell layout",
+            "itemtype": "method",
+            "name": "debugCellLayout",
+            "params": [
+                {
+                    "name": "context",
+                    "description": "the context of canvas",
+                    "type": "Object"
+                },
+                {
+                    "name": "gaugeOptions",
+                    "description": "the option of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellLayout",
+                    "description": "the cell layout properties",
+                    "type": "Object"
+                }
+            ],
+            "class": "Logger",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 185,
+            "description": "context of canvas",
+            "itemtype": "property",
+            "name": "context",
+            "type": "Object",
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 192,
+            "description": "placeholder of canvas",
+            "itemtype": "property",
+            "name": "placeholder",
+            "type": "Object",
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 199,
+            "description": "options of plot",
+            "itemtype": "property",
+            "name": "options",
+            "type": "Object",
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 206,
+            "description": "options of gauge",
+            "itemtype": "property",
+            "name": "gaugeOptions",
+            "type": "Object",
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 213,
+            "description": "data series",
+            "itemtype": "property",
+            "name": "series",
+            "type": "Array",
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 220,
+            "description": "logger",
+            "itemtype": "property",
+            "name": "logger",
+            "type": "Object",
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 244,
+            "description": "calculate layout",
+            "itemtype": "method",
+            "name": "calculateLayout",
+            "return": {
+                "description": "the calculated layout properties"
+            },
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 356,
+            "description": "calculate the values which are set as 'auto'",
+            "itemtype": "method",
+            "name": "calculateAutoValues",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellWidth",
+                    "description": "the width of cell",
+                    "type": "Number"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 393,
+            "description": "calculate the layout of the cell inside",
+            "itemtype": "method",
+            "name": "calculateCellLayout",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellWidth",
+                    "description": "the width of cell",
+                    "type": "Number"
+                },
+                {
+                    "name": "i",
+                    "description": "the index of the series",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "the calculated cell layout properties"
+            },
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 435,
+            "description": "draw the background of chart",
+            "itemtype": "method",
+            "name": "drawBackground",
+            "params": [
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 454,
+            "description": "draw the background of cell",
+            "itemtype": "method",
+            "name": "drawCellBackground",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellLayout",
+                    "description": "the cell layout properties",
+                    "type": "Object"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 476,
+            "description": "draw the gauge",
+            "itemtype": "method",
+            "name": "drawGauge",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellLayout",
+                    "description": "the cell layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "label",
+                    "description": "the label of data",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "the value of the gauge",
+                    "type": "Number"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 521,
+            "description": "decide the color of the data from the threshold options",
+            "itemtype": "method",
+            "name": "getColor",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "data",
+                    "description": "the value of the gauge",
+                    "type": "Number"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 541,
+            "description": "calculate the angle of the data",
+            "itemtype": "method",
+            "name": "calculateAngle",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "data",
+                    "description": "the value of the gauge",
+                    "type": "Number"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 564,
+            "description": "draw the arc of the threshold",
+            "itemtype": "method",
+            "name": "drawThreshold",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellLayout",
+                    "description": "the cell layout properties",
+                    "type": "Object"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 594,
+            "description": "draw an arc with a shadow",
+            "itemtype": "method",
+            "name": "drawArcWithShadow",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "cx",
+                    "description": "the x position of the center",
+                    "type": "Number"
+                },
+                {
+                    "name": "cy",
+                    "description": "the y position of the center",
+                    "type": "Number"
+                },
+                {
+                    "name": "r",
+                    "description": "the radius of an arc",
+                    "type": "Number"
+                },
+                {
+                    "name": "w",
+                    "description": "the width of an arc",
+                    "type": "Number"
+                },
+                {
+                    "name": "rd1",
+                    "description": "the start angle of an arc in radians",
+                    "type": "Number"
+                },
+                {
+                    "name": "rd2",
+                    "description": "the end angle of an arc in radians",
+                    "type": "Number"
+                },
+                {
+                    "name": "lc",
+                    "description": "the color of a line",
+                    "type": "String"
+                },
+                {
+                    "name": "lw",
+                    "description": "the widht of a line",
+                    "type": "Number"
+                },
+                {
+                    "name": "fc",
+                    "description": "the fill color  of an arc",
+                    "type": "String"
+                },
+                {
+                    "name": "blur",
+                    "description": "the shdow blur",
+                    "type": "Number"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 630,
+            "description": "draw the label of the gauge",
+            "itemtype": "method",
+            "name": "drawLable",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellLayout",
+                    "description": "the cell layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "i",
+                    "description": "the index of the series",
+                    "type": "Number"
+                },
+                {
+                    "name": "item",
+                    "description": "the item of the series",
+                    "type": "Object"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 650,
+            "description": "draw the value of the gauge",
+            "itemtype": "method",
+            "name": "drawValue",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellLayout",
+                    "description": "the cell layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "i",
+                    "description": "the index of the series",
+                    "type": "Number"
+                },
+                {
+                    "name": "item",
+                    "description": "the item of the series",
+                    "type": "Object"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 670,
+            "description": "draw the values of the threshold",
+            "itemtype": "method",
+            "name": "drawThresholdValues",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellLayout",
+                    "description": "the cell layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "i",
+                    "description": "the index of the series",
+                    "type": "Number"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 694,
+            "description": "draw the value of the threshold",
+            "itemtype": "method",
+            "name": "drawThresholdValue",
+            "params": [
+                {
+                    "name": "gaugeOptionsi",
+                    "description": "the options of the gauge",
+                    "type": "Object"
+                },
+                {
+                    "name": "layout",
+                    "description": "the layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "cellLayout",
+                    "description": "the cell layout properties",
+                    "type": "Object"
+                },
+                {
+                    "name": "i",
+                    "description": "the index of the series",
+                    "type": "Number"
+                },
+                {
+                    "name": "value",
+                    "description": "the value of the threshold",
+                    "type": "Number"
+                },
+                {
+                    "name": "a",
+                    "description": "the angle of the value drawn",
+                    "type": "Number"
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 719,
+            "description": "draw a text\n\nthe textOptions is assumed as follows:\n\n  textOptions: {\n      background: {\n          color: null,\n          opacity: 0\n      },\n      font: {\n          size: \"auto\"\n          family: \"\\\"ＭＳ ゴシック\\\",sans-serif\"\n      },\n      color: null\n  }",
+            "itemtype": "method",
+            "name": "drawText",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "x",
+                    "description": "the x position of the text drawn (left top)",
+                    "type": "Number"
+                },
+                {
+                    "name": "y",
+                    "description": "the y position of the text drawn (left top)",
+                    "type": "Number"
+                },
+                {
+                    "name": "id",
+                    "description": "the id of the dom element",
+                    "type": "String"
+                },
+                {
+                    "name": "text",
+                    "description": "the text drawn",
+                    "type": "String"
+                },
+                {
+                    "name": "textOptions",
+                    "description": "the option of the text",
+                    "type": "Object"
+                },
+                {
+                    "name": "a",
+                    "description": "the angle of the value drawn",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "class": "Gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 784,
+            "description": "get a instance of Logger",
+            "itemtype": "method",
+            "name": "getLogger",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "debugOptions",
+                    "description": "the options of debug",
+                    "type": "Object"
+                }
+            ],
+            "class": "flot.gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 796,
+            "description": "calculate the index of columns for the specified data",
+            "itemtype": "method",
+            "name": "col",
+            "params": [
+                {
+                    "name": "columns",
+                    "description": "the number of columns",
+                    "type": "Number"
+                },
+                {
+                    "name": "i",
+                    "description": "the index of the series",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "the index of columns"
+            },
+            "class": "flot.gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 809,
+            "description": "calculate the index of rows for the specified data",
+            "itemtype": "method",
+            "name": "row",
+            "params": [
+                {
+                    "name": "columns",
+                    "description": "the number of rows",
+                    "type": "Number"
+                },
+                {
+                    "name": "i",
+                    "description": "the index of the series",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "the index of rows"
+            },
+            "class": "flot.gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 822,
+            "description": "calculate the angle in radians\n\ninternally, use a number without PI (0 - 2).\nso, in this function, multiply PI",
+            "itemtype": "method",
+            "name": "toRad",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "the number of angle without PI",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "the angle in radians"
+            },
+            "class": "flot.gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 837,
+            "description": "draw an arc",
+            "itemtype": "method",
+            "name": "drawArc",
+            "params": [
+                {
+                    "name": "context",
+                    "description": "the context of canvas",
+                    "type": "Object"
+                },
+                {
+                    "name": "cx",
+                    "description": "the x position of the center",
+                    "type": "Number"
+                },
+                {
+                    "name": "cy",
+                    "description": "the y position of the center",
+                    "type": "Number"
+                },
+                {
+                    "name": "r",
+                    "description": "the radius of an arc",
+                    "type": "Number"
+                },
+                {
+                    "name": "w",
+                    "description": "the width of an arc",
+                    "type": "Number"
+                },
+                {
+                    "name": "rd1",
+                    "description": "the start angle of an arc in radians",
+                    "type": "Number"
+                },
+                {
+                    "name": "rd2",
+                    "description": "the end angle of an arc in radians",
+                    "type": "Number"
+                },
+                {
+                    "name": "lc",
+                    "description": "the color of a line",
+                    "type": "String"
+                },
+                {
+                    "name": "lw",
+                    "description": "the widht of a line",
+                    "type": "Number"
+                },
+                {
+                    "name": "fc",
+                    "description": "the fill color  of an arc",
+                    "type": "String"
+                }
+            ],
+            "class": "flot.gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 879,
+            "description": "initialize plugin",
+            "itemtype": "method",
+            "name": "init",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "plot",
+                    "description": "a instance of plot",
+                    "type": "Object"
+                }
+            ],
+            "class": "flot.gauge",
+            "module": "flot.gauge"
+        },
+        {
+            "file": "jquery.flot.gauge.js",
+            "line": 989,
+            "description": "[defaults description]",
+            "itemtype": "property",
+            "name": "defaults",
+            "type": "{Object}",
+            "class": "flot.gauge",
+            "module": "flot.gauge"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: this",
+            "line": " js\\excanvas.js:54"
+        },
+        {
+            "message": "Missing item type\nThis funtion is assigned to the <canvas> elements as element.getContext().",
+            "line": " js\\excanvas.js:54"
+        },
+        {
+            "message": "Missing item type\nBinds a function to an object. The returned function will always use the\npassed in {@code obj} as {@code this}.\n\nExample:\n\n  g = bind(f, obj, a, b)\n  g(c, d) // will do f.call(obj, a, b, c, d)",
+            "line": " js\\excanvas.js:66"
+        },
+        {
+            "message": "Missing item type\nPublic initializes a canvas element so that it can be used as canvas\nelement from now on. This is called automatically before the page is\nloaded but if you are creating elements using createElement you need to\nmake sure this is called on the element.",
+            "line": " js\\excanvas.js:133"
+        },
+        {
+            "message": "Missing item type\nThis class implements CanvasRenderingContext2D interface as described by\nthe WHATWG.",
+            "line": " js\\excanvas.js:564"
+        },
+        {
+            "message": "Missing item type\nThe text drawing function.\nThe maxWidth argument isn't taken in account, since no browser supports\nit yet.",
+            "line": " js\\excanvas.js:1212"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js\\excanvas.js:1330"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js\\jquery.flot.growraf.js:55"
+        },
+        {
+            "message": "Missing item type\nUtility function for retrieving the text value of an array of DOM nodes",
+            "line": " js\\jquery.js:3983"
+        },
+        {
+            "message": "Missing item type\nFlot plugin for rendering gauge charts.\n\nCopyright (c) 2015 @toyoty99.\n\nLicensed under the MIT license.",
+            "line": " old\\jquery.flot.gauge_20150204.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " old\\jquery.flot.gauge_20150204.js:10"
+        },
+        {
+            "message": "Missing item type\ndraw gauges",
+            "line": " old\\jquery.flot.gauge_20150204.js:72"
+        },
+        {
+            "message": "Missing item type\ncalculate the index of columns for the specified data",
+            "line": " old\\jquery.flot.gauge_20150204.js:147"
+        },
+        {
+            "message": "Missing item type\ncalculate the index of rows for the specified data",
+            "line": " old\\jquery.flot.gauge_20150204.js:158"
+        },
+        {
+            "message": "Missing item type\ncalculate the angle in radians\n\ninternally, use a number without PI (0 - 2).\nso, in this function, multiply PI",
+            "line": " old\\jquery.flot.gauge_20150204.js:169"
+        },
+        {
+            "message": "Missing item type\ncalculate layout",
+            "line": " old\\jquery.flot.gauge_20150204.js:182"
+        },
+        {
+            "message": "Missing item type\ncalculate the values which are set as 'auto'",
+            "line": " old\\jquery.flot.gauge_20150204.js:296"
+        },
+        {
+            "message": "Missing item type\ndebug the layout",
+            "line": " old\\jquery.flot.gauge_20150204.js:330"
+        },
+        {
+            "message": "Missing item type\ncalculate the layout of the cell inside",
+            "line": " old\\jquery.flot.gauge_20150204.js:354"
+        },
+        {
+            "message": "Missing item type\ndebug the cell layout",
+            "line": " old\\jquery.flot.gauge_20150204.js:395"
+        },
+        {
+            "message": "Missing item type\ndraw the background of chart",
+            "line": " old\\jquery.flot.gauge_20150204.js:485"
+        },
+        {
+            "message": "Missing item type\ndraw the background of cell",
+            "line": " old\\jquery.flot.gauge_20150204.js:505"
+        },
+        {
+            "message": "Missing item type\ndraw the gauge",
+            "line": " old\\jquery.flot.gauge_20150204.js:527"
+        },
+        {
+            "message": "Missing item type\ndecide the color of the data from the threshold options",
+            "line": " old\\jquery.flot.gauge_20150204.js:575"
+        },
+        {
+            "message": "Missing item type\ncalculate the angle of the data",
+            "line": " old\\jquery.flot.gauge_20150204.js:593"
+        },
+        {
+            "message": "Missing item type\ndraw the arc of the threshold",
+            "line": " old\\jquery.flot.gauge_20150204.js:614"
+        },
+        {
+            "message": "Missing item type\ndraw an arc",
+            "line": " old\\jquery.flot.gauge_20150204.js:644"
+        },
+        {
+            "message": "Missing item type\ndraw an arc with a shadow",
+            "line": " old\\jquery.flot.gauge_20150204.js:684"
+        },
+        {
+            "message": "Missing item type\ndraw the label of the gauge",
+            "line": " old\\jquery.flot.gauge_20150204.js:720"
+        },
+        {
+            "message": "Missing item type\ndraw the value of the gauge",
+            "line": " old\\jquery.flot.gauge_20150204.js:741"
+        },
+        {
+            "message": "Missing item type\ndraw the values of the threshold",
+            "line": " old\\jquery.flot.gauge_20150204.js:762"
+        },
+        {
+            "message": "Missing item type\ndraw the value of the threshold",
+            "line": " old\\jquery.flot.gauge_20150204.js:786"
+        },
+        {
+            "message": "Missing item type\ndraw a text\n\nthe textOptions is assumed as follows:\n\n  textOptions: {\n      background: {\n          color: null,\n          opacity: 0\n      },\n      font: {\n          size: \"auto\"\n          family: \"\\\"ＭＳ ゴシック\\\",sans-serif\"\n      },\n      color: null\n  }",
+            "line": " old\\jquery.flot.gauge_20150204.js:812"
+        },
+        {
+            "message": "Missing item type",
+            "line": " old\\jquery.flot.gauge_20150204.js:877"
+        },
+        {
+            "message": "Missing item type\nFlot plugin for rendering gauge charts.\n\nCopyright (c) 2015 @toyoty99.\n\nLicensed under the MIT license.",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:1"
+        },
+        {
+            "message": "Missing item type\nLogger class",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:9"
+        },
+        {
+            "message": "Missing item type\nconstructor",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:13"
+        },
+        {
+            "message": "Missing item type\ndebug the layout",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:45"
+        },
+        {
+            "message": "Missing item type\ndebug the cell layout",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:69"
+        },
+        {
+            "message": "Missing item type\nGauge class",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:162"
+        },
+        {
+            "message": "Missing item type",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:166"
+        },
+        {
+            "message": "Missing item type\nconstructor",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:169"
+        },
+        {
+            "message": "Missing item type\ncalculate layout",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:178"
+        },
+        {
+            "message": "Missing item type\ncalculate the values which are set as 'auto'",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:292"
+        },
+        {
+            "message": "Missing item type\ncalculate the layout of the cell inside",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:327"
+        },
+        {
+            "message": "Missing item type\ndraw the background of chart",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:368"
+        },
+        {
+            "message": "Missing item type\ndraw the background of cell",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:388"
+        },
+        {
+            "message": "Missing item type\ndraw the gauge",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:410"
+        },
+        {
+            "message": "Missing item type\ndecide the color of the data from the threshold options",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:458"
+        },
+        {
+            "message": "Missing item type\ncalculate the angle of the data",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:476"
+        },
+        {
+            "message": "Missing item type\ndraw the arc of the threshold",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:497"
+        },
+        {
+            "message": "Missing item type\ndraw an arc",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:527"
+        },
+        {
+            "message": "Missing item type\ndraw an arc with a shadow",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:567"
+        },
+        {
+            "message": "Missing item type\ndraw the label of the gauge",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:603"
+        },
+        {
+            "message": "Missing item type\ndraw the value of the gauge",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:624"
+        },
+        {
+            "message": "Missing item type\ndraw the values of the threshold",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:645"
+        },
+        {
+            "message": "Missing item type\ndraw the value of the threshold",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:669"
+        },
+        {
+            "message": "Missing item type\ndraw a text\n\nthe textOptions is assumed as follows:\n\n  textOptions: {\n      background: {\n          color: null,\n          opacity: 0\n      },\n      font: {\n          size: \"auto\"\n          family: \"\\\"ＭＳ ゴシック\\\",sans-serif\"\n      },\n      color: null\n  }",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:695"
+        },
+        {
+            "message": "Missing item type\ncalculate the index of columns for the specified data",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:761"
+        },
+        {
+            "message": "Missing item type\ncalculate the index of rows for the specified data",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:772"
+        },
+        {
+            "message": "Missing item type\ncalculate the angle in radians\n\ninternally, use a number without PI (0 - 2).\nso, in this function, multiply PI",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:783"
+        },
+        {
+            "message": "Missing item type\ninitialize plugin",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:796"
+        },
+        {
+            "message": "Missing item type",
+            "line": " old\\jquery.flot.gauge_20150204_2.js:905"
+        }
+    ]
+}
