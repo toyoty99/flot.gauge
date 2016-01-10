@@ -321,7 +321,7 @@
                 toRad(gaugeOptionsi.gauge.endAngle),
                 gaugeOptionsi.gauge.stroke.color,  // line color
                 gaugeOptionsi.gauge.stroke.width,  // line width
-                "white",           // fill color
+                gaugeOptionsi.gauge.frameColor,    // fill color
                 blur);
 
             // draw gauge
