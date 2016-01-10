@@ -262,6 +262,9 @@
          */
         Gauge.prototype.drawBackground = function(layout) {
             logger.log("flot.gauge.drawBackground");
+            if (!options.grid.show) {
+                return;
+            }
             context.save();
             context.strokeStyle = options.grid.borderColor;
             context.lineWidth = options.grid.borderWidth;
