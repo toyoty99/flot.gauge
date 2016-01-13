@@ -54,11 +54,15 @@ gauges: {
         vMargin: 5,
         square: false
     },
+    frame: {
+        show: true
+    },
     cell: {
         background: {
             color: null
         },
         border: {
+            show: true,
             color: "black",
             width: 1
         },
@@ -71,13 +75,16 @@ gauges: {
         endAngle: 2.1, // 0 - 2 factor of the radians
         min: 0,
         max: 100,
+        background: {
+            color: "white"
+        },
+        border: {
+            color: "lightgray",
+            width: 2
+        },
         shadow: {
             show: true,
             blur: 5
-        },
-        stroke: {
-            color: "lightgray",
-            width: 2
         }
     },
     label: {

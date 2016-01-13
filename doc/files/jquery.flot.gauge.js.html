@@ -524,6 +524,9 @@
          */
         Gauge.prototype.drawBackground = function(layout) {
             logger.log(&quot;flot.gauge.drawBackground&quot;);
+            if (!gaugeOptions.frame.show) {
+                return;
+            }
             context.save();
             context.strokeStyle = options.grid.borderColor;
             context.lineWidth = options.grid.borderWidth;
@@ -545,7 +548,7 @@
         Gauge.prototype.drawCellBackground = function(gaugeOptionsi, cellLayout) {
             logger.log(&quot;flot.gauge.drawCellBackground&quot;);
             context.save();
-            if (gaugeOptionsi.cell.border &amp;&amp; gaugeOptionsi.cell.border.color &amp;&amp; gaugeOptionsi.cell.border.width) {
+            if (gaugeOptionsi.cell.border &amp;&amp; gaugeOptionsi.cell.border.show &amp;&amp; gaugeOptionsi.cell.border.color &amp;&amp; gaugeOptionsi.cell.border.width) {
                 context.strokeStyle = gaugeOptionsi.cell.border.color;
                 context.lineWidth = gaugeOptionsi.cell.border.width;
                 context.strokeRect(cellLayout.x, cellLayout.y, cellLayout.cellWidth, cellLayout.cellHeight);
@@ -581,9 +584,9 @@
                 layout.width,
                 toRad(gaugeOptionsi.gauge.startAngle),
                 toRad(gaugeOptionsi.gauge.endAngle),
-                gaugeOptionsi.gauge.stroke.color,  // line color
-                gaugeOptionsi.gauge.stroke.width,  // line width
-                &quot;white&quot;,           // fill color
+                gaugeOptionsi.gauge.border.color,      // line color
+                gaugeOptionsi.gauge.border.width,      // line width
+                gaugeOptionsi.gauge.background.color,  // fill color
                 blur);
 
             // draw gauge
@@ -1092,11 +1095,15 @@
                     vMargin: 5,
                     square: false
                 },
+                frame: {
+                    show: true
+                },
                 cell: {
                     background: {
                         color: null
                     },
                     border: {
+                        show: true,
                         color: &quot;black&quot;,
                         width: 1
                     },
@@ -1109,13 +1116,16 @@
                     endAngle: 2.1, // 0 - 2 factor of the radians
                     min: 0,
                     max: 100,
+                    background: {
+                        color: &quot;white&quot;
+                    },
+                    border: {
+                        color: &quot;lightgray&quot;,
+                        width: 2
+                    },
                     shadow: {
                         show: true,
                         blur: 5
-                    },
-                    stroke: {
-                        color: &quot;lightgray&quot;,
-                        width: 2
                     }
                 },
                 label: {

@@ -262,7 +262,7 @@
          */
         Gauge.prototype.drawBackground = function(layout) {
             logger.log("flot.gauge.drawBackground");
-            if (!options.grid.show) {
+            if (!gaugeOptions.frame.show) {
                 return;
             }
             context.save();
@@ -286,7 +286,7 @@
         Gauge.prototype.drawCellBackground = function(gaugeOptionsi, cellLayout) {
             logger.log("flot.gauge.drawCellBackground");
             context.save();
-            if (gaugeOptionsi.cell.border && gaugeOptionsi.cell.border.color && gaugeOptionsi.cell.border.width) {
+            if (gaugeOptionsi.cell.border && gaugeOptionsi.cell.border.show && gaugeOptionsi.cell.border.color && gaugeOptionsi.cell.border.width) {
                 context.strokeStyle = gaugeOptionsi.cell.border.color;
                 context.lineWidth = gaugeOptionsi.cell.border.width;
                 context.strokeRect(cellLayout.x, cellLayout.y, cellLayout.cellWidth, cellLayout.cellHeight);
@@ -322,9 +322,9 @@
                 layout.width,
                 toRad(gaugeOptionsi.gauge.startAngle),
                 toRad(gaugeOptionsi.gauge.endAngle),
-                gaugeOptionsi.gauge.stroke.color,  // line color
-                gaugeOptionsi.gauge.stroke.width,  // line width
-                "white",           // fill color
+                gaugeOptionsi.gauge.border.color,      // line color
+                gaugeOptionsi.gauge.border.width,      // line width
+                gaugeOptionsi.gauge.background.color,  // fill color
                 blur);
 
             // draw gauge
